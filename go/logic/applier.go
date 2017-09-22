@@ -978,7 +978,7 @@ func (this *Applier) ApplyDMLEventQuery(dmlEvent *binlog.BinlogDMLEvent) error {
 
 	if err != nil {
 		err = fmt.Errorf("%s; query=%s; args=%+v", err.Error(), query, args)
-		return log.Errore(err)
+		log.Errore(err)
 	}
 	// no error
 	atomic.AddInt64(&this.migrationContext.TotalDMLEventsApplied, 1)
@@ -1029,7 +1029,7 @@ func (this *Applier) ApplyDMLEventQueries(dmlEvents [](*binlog.BinlogDMLEvent)) 
 	}()
 
 	if err != nil {
-		return log.Errore(err)
+		log.Errore(err)
 	}
 	// no error
 	atomic.AddInt64(&this.migrationContext.TotalDMLEventsApplied, int64(len(dmlEvents)))
